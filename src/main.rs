@@ -21,7 +21,7 @@ fn get_config_from_env(env_var: &str) -> Result<PathBuf, VarError> {
 }
 
 fn main() -> Result<(), Error> {
-    let matches = App::new("Kakship")
+    let app= App::new("Kakship")
         .setting(AppSettings::SubcommandRequired)
         .about("Status line Starship wrapper for Kakoune")
         .arg(
@@ -57,8 +57,8 @@ fn main() -> Result<(), Error> {
                         .required(true)
                         .help("Arguement to forward to Starship"),
                 )
-        )
-        .get_matches();
+        );
+    let matches = app.get_matches();
 
     let bin = matches.value_of("starship_path").unwrap();
     let shell = matches.value_of("starship_shell").unwrap();
@@ -78,9 +78,10 @@ fn main() -> Result<(), Error> {
     };
 
     if let Some(_) = matches.subcommand_matches("kak") {
+        let kak_bin = env::current_exe().unwrap();
         let kak_cmd = format!(
-            "kakship --starship_path={:?} --starship_shell={:?} --starship_config={:?} starship prompt",
-            bin, shell, config
+            "{:?} --starship_path={:?} --starship_shell={:?} --starship_config={:?} starship prompt",
+            kak_bin, bin, shell, config
         );
         let kak_code = KAK_CODE.replace("KAKSHIP_CMD", &kak_cmd);
         println!("{}", &kak_code);
