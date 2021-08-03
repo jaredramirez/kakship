@@ -17,6 +17,6 @@ pkgs.symlinkJoin {
   paths = [ kakship ];
   postBuild = ''
     rm "$out/bin/kakship"
-    makeWrapper "${kakship}/bin/kakship" "$out/bin/kakship" --add-flags "--starship_config=${starship}/bin/starship"
+    makeWrapper "${kakship}/bin/kakship" "$out/bin/kakship" --add-flags "--starship_path=${starship}/bin/starship"
   '';
 }
