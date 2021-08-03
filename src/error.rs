@@ -4,6 +4,7 @@ pub enum Error {
     ConfigVarError(env::VarError),
     IoError(io::Error),
     StarshipError(String),
+    InternalError,
 }
 
 impl fmt::Debug for Error {
@@ -17,6 +18,7 @@ impl fmt::Debug for Error {
 			},
 			Error::IoError(ref err) => write!(f, "Error executing starship {:?}", err),
 			Error::StarshipError(ref err) => write!(f, "{:?}", err),
+			Error::InternalError => write!(f, "Internal Error"),
 		}
     }
 }

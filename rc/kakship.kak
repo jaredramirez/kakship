@@ -17,7 +17,7 @@ define-command -hidden -docstring "set modeline using kakship" starship-modeline
 		#                     kak_opt_lsp_diagnostic_error_count, kak_opt_lsp_diagnostic_warning_count
 		dir=${kak_buffile%/*}
 		[ "$dir" != "$kak_buffile" ] && cd $dir
-		printf 'set-option window modelinefmt %%{%s}' "$(kakship prompt)"
+		printf 'set-option window modelinefmt %%{%s}' "$(KAKSHIP_CMD)"
 	}
 }
 
