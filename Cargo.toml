@@ -1,10 +1,11 @@
 [package]
 name = "kakship"
 version = "0.2.7"
-authors = ["Éric BURGHARD <eric@itsufficient.me>"]
+authors = ["Éric BURGHARD <eric@itsufficient.me>", "Jared Ramirez <jaredramirez@hey.com>"]
 edition = "2018"
 
 [dependencies]
 kak = { git = "https://github.com/eburghar/kak.rs.git", tag = "v0.1.2" }
-# kak = { path = "../kak" }
 yew-ansi = { git = "https://github.com/eburghar/yew-ansi.git", default-features = false }
+clap = "~2.27.0"
+

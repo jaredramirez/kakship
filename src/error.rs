@@ -16,7 +16,7 @@ impl fmt::Debug for Error {
 				}
 			},
 			Error::IoError(ref err) => write!(f, "Error executing starship {:?}", err),
-			Error::StarshipError(ref err) => write!(f, "{:?}", err)
+			Error::StarshipError(ref err) => write!(f, "{:?}", err),
 		}
     }
 }
